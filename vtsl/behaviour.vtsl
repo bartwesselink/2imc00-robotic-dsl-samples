@@ -1,0 +1,26 @@
+action MoveUntilObstacle(double speed)
+    behavior normal
+        connect DistanceSensor.distanceTopic as distanceSensor with queue size 1;
+        DistanceMessage curMsg = read distanceSensor;
+
+        while (curMsg.distance < 100)
+            curMsg = read distanceSensor;
+            setSpeed(speed)
+        end on abort
+            disconnect distanceSensor;
+            setSpeed(0);
+        end
+
+        disconnect distanceSensor;
+        setSpeed(0);
+
+        return;
+    end
+
+    function setSpeed(double speed)
+        Float64 speedMsg;
+        speedMsg.data = speed;
+
+        write speedMsg to Motor.speedTopic;
+    end
+end

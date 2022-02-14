@@ -1,0 +1,22 @@
+skill component DistanceSensor {
+    Advertised Topics:
+        topic DistanceMessage distanceTopic;
+
+    Offered Services:
+
+    initialization
+
+    end
+
+    execute behavior
+        DistanceMessage msg;
+
+        choose
+            msg.distance = 1200;
+        or
+            msg.distance = 10;
+        end
+
+        write msg to DistanceSensor.distanceTopic;
+    end
+}

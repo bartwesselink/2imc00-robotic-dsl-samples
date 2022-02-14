@@ -1,0 +1,14 @@
+skill component Motor {
+    Advertised Topics:
+        topic Float64 speedTopic;
+
+    Offered Services:
+
+    initialization
+
+    end
+
+    execute behavior
+
+    end
+}
