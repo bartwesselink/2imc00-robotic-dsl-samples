@@ -1,0 +1,12 @@
+component Controller {
+    port
+        in int distance,
+        out int speed;
+
+    automaton {
+        state Moving, Halt;
+
+        Moving -> Halt {distance < 100} / { speed = 0 },
+        Moving -> Moving / { speed = 100 };
+    }
+}
