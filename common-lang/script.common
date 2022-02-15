@@ -1,0 +1,19 @@
+script Controller targets (Turtlebot, V3) {
+    void loop() {
+        Subscribe("distanceTopic");
+
+        if (ReadDistanceValue() < 100) {
+            SetSpeed(0);
+            Halt();
+        } else {
+            SetSpeed(0);
+        }
+    }
+}
+
+methodscollection {
+    meta void Subscribe(string topic);
+    meta int ReadDistanceValue();
+    meta void SetSpeed(int value);
+    meta void Halt();   
+}
